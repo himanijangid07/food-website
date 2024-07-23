@@ -751,3 +751,8 @@ footer .links ul li {
     padding: 30px;
     color: gray;
 }
+
+footer .quick a {
+    text-decoration: none;
+    color: gray;
+}
