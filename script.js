@@ -21,8 +21,18 @@ function showSlides() {
 let btn = document.getElementById('btn1');
 
 function openbtn() {
-  let p = document.getElementById('para');
-  p.style.display = "grid";
-  let q = document.getElementsByClassName('fruits');
-  q.style.display = "none";
+  let page = document.getElementById('para');
+  page.style.display = "grid";
+  let close = document.getElementByIdName('first');
+  close.style.display = "none";
+}
+
+function openbtn1() {
+  let close1 = document.getElementByIdName("para1");
+  close1.style.display = "grid";
+  page.style.display = "none";
+}
+
+function openbtn2() {
+
 }

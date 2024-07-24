@@ -756,7 +756,7 @@ footer .links ul li {
 .footer {
     background-color: #111111;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 30px;
     color: gray;
     font-family: 'Open sans';
@@ -813,14 +813,17 @@ footer .quick a:hover {
     background-color: #3cb815;
     color: white;
     padding: 30px;
-    margin: 50px;
-    margin-left: 150px;
-    width: 400px;
+    margin: 30px;
+    margin-left: 50px;
+    width: 450px;
+    height: 500px;
+    padding: 50px;
 }
 
 .lefts h3 {
     margin: 10px;
     font-family: 'lora';
+    margin-top: 20px;
 }
 
 .lefts ul li {
@@ -848,15 +851,102 @@ footer .quick a:hover {
     color: gray;
     font-family: 'Open sans';
     font-size: 20px;
-    margin: 20px;
+    margin-top: 20px;
+    position: relative;
+    top: -50px;
+}
+
+.rights input {
+    margin-bottom: 20px;
+    padding: 10px;
 }
 
 .rights .input {
     display: flex;
     gap: 10px;
     height: 50px;
+    position: relative;
+    top: -30px;
 }
 
-.rigths .input input {
-    width: 100%;
+#username, #email {
+    width: 300px;
+    height: 60px;
+    border: 1px solid rgb(179, 179, 179);
+}
+
+#subject {
+    height: 60px;
+    width: 610px;
+    border: 1px solid rgb(179, 179, 179);
+}
+
+.rights textarea {
+    width: 610px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid rgb(179, 179, 179);
+}
+
+#para1 {
+    display: none;
+}
+
+.rights input::placeholder {
+    font-family: 'Open sans';
+    font-size: 14px;
+    color: #3b3b3b;
+}
+
+.rights textarea::placeholder {
+    font-family: 'Open sans';
+    font-size: 14px;
+    color: #3b3b3b;
+}
+
+.rights button {
+    background-color: #3cb815;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    padding: 15px;
+    font-size: 20px;
+    font-family: 'Open sans';
+    margin: 20px;
+    cursor: pointer;
+}
+
+.btn.btn-primary {
+    border: 0;
+    background-color: #3cb815 !important;
+    color: white !important;
+}
+
+.btn {
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn-md-square {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    position: relative;
+    left: 85%;
+}
+
+.btn-md-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
 }
