@@ -17,3 +17,12 @@ function showSlides() {
   dots[slideIndex-1].className += " active";
   setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
+
+let btn = document.getElementById('btn1');
+
+function openbtn() {
+  let p = document.getElementById('para');
+  p.style.display = "grid";
+  let q = document.getElementsByClassName('fruits');
+  q.style.display = "none";
+}

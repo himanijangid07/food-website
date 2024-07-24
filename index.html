@@ -23,9 +23,15 @@
         <div class="right">
           <div class="navbar">
             <ul>
-              <li>Home</li>
-              <li>About Us</li>
-              <li>Products</li>
+              <li>
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <a href="about.html">About Us</a>
+              </li>
+              <li>
+                <a href="products.html">Products</a>
+              </li>
               <li>
                 <div class="dropdown">
                   <button class="dropbtn">Pages <i class="fa fa-angle-down" aria-hidden="true"></i></button>
@@ -36,7 +42,9 @@
                   </div>
                 </div>
               </li>
-              <li>Contact Us</li>
+              <li>
+                <a href="contact.html">Contact Us</a>
+              </li>
               <li><i class="fa fa-search" aria-hidden="true" style="color: #999999; background-color: white; padding: 7px; border-radius: 20px;"></i></li>
               <li><i class="fa fa-user" aria-hidden="true" style="color: #999999; background-color: white; padding: 7px; border-radius: 20px;"></i></li>
               <li><i class="fa fa-shopping-cart" aria-hidden="true" style="color: #999999; background-color: white; padding: 7px; border-radius: 20px;"></i></li>
@@ -124,12 +132,12 @@
             <p>Our products are thoughtfully sourced and crafted to deliver exceptional quality, freshness, and taste in every purchase.</p>
           </div>
           <div>
-            <button>Vegetables</button>
-            <button>Fruits</button>
-            <button>Fresh</button>
+            <button id="btn1" onclick="openbtn()">Vegetables</button>
+            <button id="btn2">Fruits</button>
+            <button id="btn3">Fresh</button>
           </div>
         </div>
-        <div class="para">
+        <div class="para" id="second">
           <div class="fruits">
             <p class="new">New</p>
             <img src="images/product-1.jpg" alt="">
@@ -171,7 +179,7 @@
             </ul>
           </div>
         </div>
-        <div class="para">
+        <div class="para" id="first">
           <div class="fruits">
             <p class="new">New</p>
             <img src="images/product-5.jpg" alt="">
@@ -205,6 +213,48 @@
           <div class="fruits">
             <p class="new">New</p>
             <img src="images/product-8.jpg" alt="">
+            <h3>Fresh Banana</h3>
+            <p>$15.00 <span style="text-decoration: line-through; color: rgb(85, 85, 85);">$25.00</span></p>
+            <ul>
+              <li><i class="fa fa-eye" aria-hidden="true" style="color: #3cb813;"></i> View Detail</li>
+              <li><i class="fa fa-shopping-bag" aria-hidden="true" style="color: #3cb813;"></i> Add to Cart</li>
+            </ul>
+          </div>
+        </div>
+        <div class="para" id="para">
+          <div class="fruits">
+            <p class="new">New</p>
+            <img src="images/product-1.jpg" alt="">
+            <h3>Fresh Cucumber</h3>
+            <p>$35.00 <span style="text-decoration: line-through; color: rgb(85, 85, 85);">$39.00</span></p>
+            <ul>
+              <li><i class="fa fa-eye" aria-hidden="true" style="color: #3cb813;"></i> View Detail</li>
+              <li><i class="fa fa-shopping-bag" aria-hidden="true" style="color: #3cb813;"></i> Add to Cart</li>
+            </ul>
+          </div>
+          <div class="fruits">
+            <p class="new">New</p>
+            <img src="images/product-6.jpg" alt="">
+            <h3>Fresh Tomato</h3>
+            <p>$20.00 <span style="text-decoration: line-through; color: rgb(85, 85, 85);">$25.00</span></p>
+            <ul>
+              <li><i class="fa fa-eye" aria-hidden="true" style="color: #3cb813;"></i> View Detail</li>
+              <li><i class="fa fa-shopping-bag" aria-hidden="true" style="color: #3cb813;"></i> Add to Cart</li>
+            </ul>
+          </div>
+          <div class="fruits">
+            <p class="new">New</p>
+            <img src="images/product-7.jpg" alt="">
+            <h3>Fresh Potato</h3>
+            <p>$12.00 <span style="text-decoration: line-through; color: rgb(85, 85, 85);">$19.00</span></p>
+            <ul>
+              <li><i class="fa fa-eye" aria-hidden="true" style="color: #3cb813;"></i> View Detail</li>
+              <li><i class="fa fa-shopping-bag" aria-hidden="true" style="color: #3cb813;"></i> Add to Cart</li>
+            </ul>
+          </div>
+          <div class="fruits">
+            <p class="new">New</p>
+            <img src="images/product-3.jpg" alt="">
             <h3>Fresh Banana</h3>
             <p>$15.00 <span style="text-decoration: line-through; color: rgb(85, 85, 85);">$25.00</span></p>
             <ul>
@@ -309,16 +359,16 @@
       <div>
         <h1>Address</h1>
         <ul>
-          <li><i class="fa fa-map-marker" aria-hidden="true"></i> 123 Street, New York, USA</li>
-          <li><i class="fa fa-phone" aria-hidden="true"></i> +1234567890</li>
-          <li><i class="fa fa-envelope" aria-hidden="true"></i> info@example.com</li>
+          <li><i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 10px;"></i> 123 Street, New York, USA</li>
+          <li><i class="fa fa-phone" aria-hidden="true" style="margin-right: 10px; rotate: 90deg;"></i> +1234567890</li>
+          <li><i class="fa fa-envelope" aria-hidden="true" style="margin-right: 10px;"></i> info@example.com</li>
         </ul>
       </div>
       <div class="quick">
         <h1>Quick Links</h1>
         <ul>
           <li><i class="fa fa-angle-right" aria-hidden="true"></i>
-            <a href="">About Us</a>
+            <a href="about.html">About Us</a>
           </li>
           <li><i class="fa fa-angle-right" aria-hidden="true"></i>
             <a href="">Contact Us</a>
@@ -338,13 +388,12 @@
     <hr class="p">
     <div class="footer">
       <div>
-        &copy; Foody, All Rights Reserved
+       <span style="color: white;">&copy; Foody,</span> All Rights Reserved
       </div>
       <div>
-        Designed by: Himani Jangid
+        Designed by: <span style="color: white;;">Himani Jangid</span>
       </div>
     </div>
     <script src="script.js"></script>
-    
 </body>
 </html>

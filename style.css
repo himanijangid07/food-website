@@ -44,6 +44,11 @@ body {
     cursor: pointer;
 }
 
+.right ul li a {
+    text-decoration: none;
+    color: #999999;
+}
+
 .main {
     background-color: #e1e4eb;
 }
@@ -495,6 +500,7 @@ body {
     font-size: 20px;
     font-weight: 500;
     border: none;
+    cursor: pointer;
     border-radius: 30px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
@@ -689,6 +695,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    font-family: 'Open sans';
 }
 
 footer .logo {
@@ -724,7 +731,8 @@ footer .links p {
 }
 
 footer .links ul {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 footer .links ul li {
@@ -736,6 +744,7 @@ footer .links ul li {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+    margin: 10px;
 }
 
 .p {
@@ -750,9 +759,104 @@ footer .links ul li {
     justify-content: space-between;
     padding: 30px;
     color: gray;
+    font-family: 'Open sans';
 }
 
 footer .quick a {
     text-decoration: none;
     color: gray;
+}
+
+footer .quick ul li:hover {
+    transform: scaleX(1.2);
+    -webkit-transform: scaleX(1.2);
+    -moz-transform: scaleX(1.2);
+    -ms-transform: scaleX(1.2);
+    -o-transform: scaleX(1.2);
+    color: white;
+}
+
+footer .quick a:hover {
+    color: white;
+}
+
+#para {
+    display: none;
+}
+
+.main1 img {
+    z-index: -1;
+}
+
+.main1 h1 {
+    font-size: 64px;
+    font-weight: 700;
+    font-family: 'Lora';
+    position: absolute;
+    top: 250px;
+    left: 100px;
+}
+
+.contact {
+    position: relative;
+}
+
+.this {
+    display: flex;
+    gap: 30px;
+    font-family: 'Open sans';
+    justify-content: center;
+    align-items: center;
+}
+
+.lefts {
+    background-color: #3cb815;
+    color: white;
+    padding: 30px;
+    margin: 50px;
+    margin-left: 150px;
+    width: 400px;
+}
+
+.lefts h3 {
+    margin: 10px;
+    font-family: 'lora';
+}
+
+.lefts ul li {
+    list-style-type: none;
+    margin-bottom: 30px;
+    margin-left: 10px;
+}
+
+.lefts .link ul {
+    display: flex;
+    gap: 5px;
+}
+
+.lefts .link ul li {
+    border: 1px solid white;
+    border-radius: 48%;
+    padding: 10px;
+    -webkit-border-radius: 48%;
+    -moz-border-radius: 48%;
+    -ms-border-radius: 48%;
+    -o-border-radius: 48%;
+}
+
+.rights p {
+    color: gray;
+    font-family: 'Open sans';
+    font-size: 20px;
+    margin: 20px;
+}
+
+.rights .input {
+    display: flex;
+    gap: 10px;
+    height: 50px;
+}
+
+.rigths .input input {
+    width: 100%;
 }
