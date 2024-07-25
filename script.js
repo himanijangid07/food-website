@@ -18,21 +18,28 @@ function showSlides() {
   setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 
-let btn = document.getElementById('btn1');
-
 function openbtn() {
-  let page = document.getElementById('para');
-  page.style.display = "grid";
-  let close = document.getElementByIdName('first');
+  let veggies = document.getElementById("veggies");
+  veggies.style.display = "grid";
+  let close = document.getElementById('fresh');
   close.style.display = "none";
+  let close1 = document.getElementById("fresh1");
+  close1.style.display = "none";
 }
 
 function openbtn1() {
-  let close1 = document.getElementByIdName("para1");
-  close1.style.display = "grid";
-  page.style.display = "none";
+  veggies.style.display = "none";
+  let fruits = document.getElementById("fruits");
+  fruits.style.display = "grid";
+  close = document.getElementById('fresh');
+  close.style.display = "none";
+  close1 = document.getElementById("fresh1");
+  close1.style.display = "none";
 }
 
 function openbtn2() {
-
+  veggies.style.display = "none";
+  fruits.style.display = "none";
+  close.style.display = "grid";
+  close1.style.display = "grid";
 }
