@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import {Link} from "react-router-dom"
 
 const featureList = [
   {id: 1, title: "Natural Process", des: "Embracing nature's rhythms, our produce grows through natural processes, ensuring purity and sustainability in every bite.", image: "/images/icon-1.png", button: "Read More"},
@@ -43,7 +44,9 @@ const AboutUs = () => {
         <p className='text-white w-3/4 pl-8 pt-7'>Visit our firm to discover a world of fresh, organic produce and experience our commitment to quality and sustainability firsthand.</p>
       </div>
       <div>
+        <Link to='/contact'>
         <button className='bg-orange p-3 px-8 rounded-full text-white mt-10'>Visit Now</button>
+        </Link>
       </div>
     </div>
     <div className='section-container bg-second bg-cover bg-center h-inherit w-full features pt-24 text-center pb-10'>

@@ -13,6 +13,12 @@ import CartPage from "../pages/Products/CartPage";
 import DashboardLayout from "../layout/DashboardLayout";
 import Dashboard from "../pages/dashboard/admin/Dashboard"
 import Users from "../pages/dashboard/admin/Users"
+import AddItems from "../pages/dashboard/admin/AddItems";
+import ManageItems from "../pages/dashboard/admin/ManageItems"
+import UpdateProduct from '../pages/dashboard/admin/UpdateProduct'
+import Payment from "../pages/Products/Payment"
+import Order from "../pages/dashboard/Order"
+import ManageBookings from "../pages/dashboard/admin/ManageBookings"
 
 const router = createBrowserRouter([
     {
@@ -44,8 +50,16 @@ const router = createBrowserRouter([
           element: <CartPage/>
         },
         {
+          path: "/payment-checkout",
+          element: <Payment/>
+        },
+        {
           path: "/update-profile",
           element: <UpdateProfile/>
+        },
+        {
+          path: '/order',
+          element: <Order/>
         }
       ]
     },
@@ -60,6 +74,23 @@ const router = createBrowserRouter([
         {
           path: 'users',
           element: <Users/>
+        },
+        {
+          path: 'add-items',
+          element: <AddItems/>
+        },
+        {
+          path: 'manage-items',
+          element: <ManageItems/>
+        },
+        {
+          path: 'update-product/:id',
+          element: <UpdateProduct/>, 
+          loader: ({params}) => fetch(`http://localhost:6003/product/${params.id}`)
+        },
+        {
+          path: "manage-bookings",
+          element: <ManageBookings/>
         }
       ]
     },

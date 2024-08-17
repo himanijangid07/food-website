@@ -4,6 +4,7 @@ import Card from "../../components/Card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const [product, setProduct] = useState([]);
@@ -146,7 +147,7 @@ const Product = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-20 px-4 ml-20 sm:px-6 lg:px-12 lg:ml-5 products">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:pt-20 lg:mx-auto lg:px-12 px-5 py-5 w-[350px] lg:w-[1300px] products">
         {filteredItems.map((item, i) => (
           <Cards key={i} item={item} />
         ))}
@@ -166,9 +167,9 @@ const Product = () => {
           </p>
         </div>
         <div>
-          <button className="bg-orange p-3 px-8 rounded-full text-white mt-10">
-            Visit Now
-          </button>
+        <Link to='/contact'>
+        <button className='bg-orange p-3 px-8 rounded-full text-white mt-10'>Visit Now</button>
+        </Link>
         </div>
       </div>
       <div className="bg-second bg-cover bg-center h-inherit w-full features relative z-0">

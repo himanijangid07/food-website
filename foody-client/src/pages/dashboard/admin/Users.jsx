@@ -2,20 +2,37 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faUsers } from '@fortawesome/free-solid-svg-icons';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const Users = () => {
+  const axiosSecure = useAxiosSecure();
     const {refetch, data:users = []} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const response = await fetch(`http://localhost:6003/users`)
-            return response.json()
+            const response = await axiosSecure.get('/users')
+            return response.data;
           },
     })
-    console.log(users);
+    // const isAdmin = false; 
+    // console.log(users);
+
+    const handleMakeAdmin = user => {
+      axiosSecure.patch(`/users/admin/${user._id }`).then (res => {
+        alert(`${user.name} is now an admin`);
+        refetch();
+      }) 
+    }
+
+    const handleDeleteUser = user => {
+      axiosSecure.delete(`/users/${user._id}`).then (res => {
+        alert(`${user.name} is now removed from database`);
+        refetch();
+      })
+    }
   return (
     <div className='text-black'>
       <div className='flex items-center justify-between m-4'>
-        <h5>All Users</h5>
+      <h2 className='text-2xl text-black font-lora font-bold my-5'>Manage All <span className='text-green'>Users</span></h2>
         <h5>Total Users: {users.length}</h5>
       </div>
       <div>
@@ -41,12 +58,12 @@ const Users = () => {
                   <td>{user.email}</td>
                   <td> {
                     user.role === 'admin' ? "Admin" : (
-                      <button className="btn btn-ghost btn-xs btn-circle text-white bg-indigo-600">
+                      <button onClick={() => handleMakeAdmin(user )} className="btn btn-ghost btn-xs btn-circle text-white bg-indigo-600">
                         <FontAwesomeIcon icon={faUsers}/>
                       </button>
                     )}
                   </td>
-                  <td><button className="btn btn-ghost btn-xs" onClick={() => handleDelete(item)}>
+                  <td><button className="btn btn-ghost btn-xs" onClick={() => handleDeleteUser(user)}>
             <FontAwesomeIcon icon={faTrash} className='text-red'/>
           </button></td>
               </tr>

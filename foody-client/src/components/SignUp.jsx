@@ -5,6 +5,8 @@ import { faGoogle, faGithub, faFacebook } from '@fortawesome/free-brands-svg-ico
 import { useForm } from "react-hook-form"
 import Modal from './Modal';
 import { AuthContext } from '../contexts/AuthProvider';
+import axios from 'axios';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const Signup = () => {
     const closeModal = () => {
@@ -18,22 +20,51 @@ const Signup = () => {
 
       const location = useLocation();
       const navigate = useNavigate();
+      const axiosPublic = useAxiosPublic();
 
       const from = location.state?.from?.pathname || "/";
 
-      const {createUser, login} = useContext(AuthContext)
+      const {createUser, signUpWithGmail, updateUserProfile} = useContext(AuthContext)
       const onSubmit = (data) => {
         const email = data.email;
         const password = data.password;
         createUser(email, password).then((result) => {
           const user = result.user;
-          alert("Account Created successfully");
+          updateUserProfile(data.email, data.photoURL).then(() => {
+             const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+            axiosPublic.post('  /users', userInfo).then((response) => {
+              // console.log(response);
+              alert("Account Created successfully");
           document.getElementById('my_modal_3').close();
-            navigate(from, {replace: true})
+            navigate(from, {replace: true}) 
+            })
+          })
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
         })
+      }
+
+      const handleRegister = () => {
+        signUpWithGmail().then((result) => {
+          const user = result.user;
+          const userInfo = {
+            name: result?.user?.displayName,
+            email: result?.user?.email
+          }
+          axiosPublic.post('/users', userInfo).then((response) => {
+            // console.log(response);
+            alert("Account Created successfully");
+        document.getElementById('my_modal_3').close();
+          navigate('/')
+          })
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+      })
       }
   return (
     <div className='max-w-md min-h-screen bg-white shadow w-full mx-auto flex items-center justify-center (prefers-color-scheme: dark)my-20'>
@@ -62,7 +93,7 @@ const Signup = () => {
         <Link to="/" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</Link>
       </form>
       <div className='text-center space-x-3 mb-1'>
-      <button className="btn btn-circle bg-white text-black border-1 border-gray hover:bg-green hover:text-white hover:border-0">
+      <button onClick={() => handleRegister()} className="btn btn-circle bg-white text-black border-1 border-gray hover:bg-green hover:text-white hover:border-0">
             <FontAwesomeIcon icon={faGoogle} size='xl'/>
       </button>
       <button className="btn btn-circle bg-white text-black border-1 border-gray hover:bg-green hover:text-white hover:border-0">

@@ -11,7 +11,11 @@ const productSchema = new Schema({
     image: String,
     category: String,
     discountedPrice: Number,
-    actualPrice: Number
+    actualPrice: Number,
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const Product = mongoose.model("Product", productSchema);

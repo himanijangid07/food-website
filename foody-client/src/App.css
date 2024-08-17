@@ -48,24 +48,6 @@ body {
     text-align: center !important;
 }
 
-/* Parent container of the card */
-.slick-slide {
-    display: flex;
-    justify-content: center; /* Centers the card horizontally */
-    align-items: center; /* Centers the card vertically (if needed) */
-    padding: 0; /* Remove any extra padding */
-    margin: 0; /* Ensure no margin is applied */
-  }
-  
-  /* Card styling */
-  @media (max-width: 480px) {
-    .card {
-      width: 70%;
-      height: 450px; /* Set desired width */
-      padding: 10px; /* Adjust padding as needed */
-      margin: 0; /* Remove all margin */
-    }
-  }
   
 .blog {
     background-color: #f7f8fc;
@@ -104,3 +86,4 @@ input[type=number] {
     appearance: textfield;
   -moz-appearance: textfield;
 }
+

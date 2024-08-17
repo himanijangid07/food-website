@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle, faGithub, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { useForm } from "react-hook-form"
 import {AuthContext} from "../contexts/AuthProvider"
+import axios from 'axios';
+import useAxiosPublic from '../hooks/useAxiosPublic';
+import useAuth from "../hooks/useAuth"
 
 const Modal = () => {
     const closeModal = () => {
@@ -15,8 +18,9 @@ const Modal = () => {
         formState: { errors },
       } = useForm();
 
-      const {signUpWithGmail, login} = useContext(AuthContext)
+      const {signUpWithGmail, login} = useAuth();
       const [errorMessage, setErrorMessage] = useState("");
+      const axiosPublic = useAxiosPublic();
 
       const location = useLocation();
       const navigate = useNavigate();
@@ -31,11 +35,17 @@ const Modal = () => {
           login(email, password).then((result) => {
             console.log(result);
             const user = result.user;
-            if(user) {
-            alert("Login successful!")
-            document.getElementById('my_modal_3').close();
-            navigate(from, {replace: true})
-          }}).catch((error) => {
+            const userInfo = {
+              name: data.name,
+              email: data.email
+            }
+            axiosPublic.post('/users', userInfo).then((response) => {
+              // console.log(response);
+              alert("Account Created successfully");
+          document.getElementById('my_modal_3').close();
+            navigate(from, {replace: true}) 
+            })
+          }).catch((error) => {
             const errorMessage = error.message;
             console.log("Error during login:", error.message);
             setErrorMessage("Provide a correct email and password");
@@ -45,10 +55,20 @@ const Modal = () => {
       const handleLogin = () => {
         signUpWithGmail().then((result) => {
           const user = result.user;
-          alert("Login successful!");
-          document.getElementById('my_modal_3').close();
-            navigate(from, {replace: true})
-        }).catch((error) => console.log(error))
+          const userInfo = {
+            name: result?.user?.displayName,
+            email: result?.user?.email
+          }
+          axiosPublic.post(' /users', userInfo).then((response) => {
+            // console.log(response);
+            alert("Account Created successfully");
+        document.getElementById('my_modal_3').close();
+          navigate('/')
+          })
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+      })
       }
   return (
     <dialog id="my_modal_3" className="modal">
@@ -82,7 +102,7 @@ const Modal = () => {
         <button type='button' onClick={closeModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
       </form>
       <div className='text-center space-x-3 mb-1'>
-      <button onClick={handleLogin} className="btn btn-circle bg-white text-black border-1 border-gray hover:bg-green hover:text-white hover:border-0">
+      <button onClick={() => handleLogin()} className="btn btn-circle bg-white text-black border-1 border-gray hover:bg-green hover:text-white hover:border-0">
             <FontAwesomeIcon icon={faGoogle} size='xl'/>
       </button>
       <button className="btn btn-circle bg-white text-black border-1 border-gray hover:bg-green hover:text-white hover:border-0">
@@ -94,7 +114,7 @@ const Modal = () => {
       </div>
   </div>
 </dialog>
-  )
+ )
 }
 
-export default Modal
+export default Modal;

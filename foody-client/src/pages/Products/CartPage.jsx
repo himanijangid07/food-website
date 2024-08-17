@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from "sweetalert2"
 import { AuthContext } from '../../contexts/AuthProvider';
+import {Link} from "react-router-dom"
 
 const CartPage = () => {
     const [cart, refetch] = useCart();
@@ -167,19 +168,21 @@ const CartPage = () => {
     <div className='my-12 flex flex-col md:flex-row justify-center items-start'>
       <div className='md:w-1/2 space-y-3'>
         <h3 className='text-black font-medium font-lora text-f lg:text-2xl lg:px-24 px-10'>Customer Details</h3>
-        <p className='text-black font-medium font-lora lg:text-xl lg:px-24 px-10'>Name: {user.displayName}</p>
-        <p className='text-black font-medium font-lora lg:text-xl lg:px-24 px-10'>Email: {user.email}</p>
-        <p className='text-black font-medium font-lora lg:text-xl lg:px-24 px-10'>User ID: {user.uid}</p>
+        <p className='text-black font-medium font-sans lg:text-xl lg:px-24 px-10'>Name: {user.displayName}</p>
+        <p className='text-black font-medium font-sans lg:text-xl lg:px-24 px-10'>Email: {user.email}</p>
+        <p className='text-black font-medium font-sans lg:text-xl lg:px-24 px-10'>User ID: {user.uid}</p>
       </div>
       <div className='md:w-1/2 space-y-3'>
       <h3 className='text-black font-medium font-lora text-f lg:text-2xl lg:px-24 px-10 mt-5 lg:mt-0'>Shopping Details</h3>
-        <p className='text-black font-medium font-lora lg:text-xl lg:px-24 px-10'>Total Items: {cart.length}</p>
-        <p className='text-black font-medium font-lora lg:text-xl lg:px-24 px-10'>Total Price: ${orderTotal.toFixed(2)}</p>
-        <button className='text-white bg-green font-medium font-lora text-xl lg:mx-24 px-7 py-3 rounded-full mx-10'>Proceed to Checkout</button>
+        <p className='text-black font-medium font-sans lg:text-xl lg:px-24 px-10'>Total Items: {cart.length}</p>
+        <p className='text-black font-medium font-sans lg:text-xl lg:px-24 px-10'>Total Price: ${orderTotal.toFixed(2)}</p>
+        <Link to='/payment-checkout'>
+        <button className='text-white bg-green font-medium font-sans text-xl lg:mx-24 px-7 py-3 rounded-full mx-10 mt-6'> Proceed to Checkout</button>
+        </Link>
       </div>
     </div>
     </div>
-  )
+  ) 
 }
 
 export default CartPage

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
+import {Link} from "react-router-dom"
 
 const Products = () => {
   const [product, setProduct] = useState([]);
@@ -77,15 +78,17 @@ const Products = () => {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-20 px-4 ml-20 sm:px-6 lg:px-12 lg:ml-5 products">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:pt-20 lg:mx-auto lg:px-12 px-5 py-5 w-[350px] lg:w-[1300px] products">
         {filteredItems.map((item, i) => (
           <Cards key={i} item={item} />
         ))}
       </div>
       <div className="flex justify-center">
+        <Link to='/product'>
         <button className="bg-green text-white border-0 rounded-full p-3 px-8 m-10">
           Browse More Products
         </button>
+        </Link>
       </div>
     </div>
   );

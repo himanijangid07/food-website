@@ -2,14 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
 import Modal from './Modal';
-import { AuthContext } from '../contexts/AuthProvider';
 import Profile from './Profile';
 import { Link } from 'react-router-dom';
 import useCart from '../hooks/useCart';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
   const [isSticky, setSticky] = useState(false);
-  const {user} = useContext(AuthContext);
+  const {user, loading} = useAuth();
    console.log(user);
 
   const [cart, refetch] = useCart();
@@ -81,22 +81,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <button className='btn btn-ghost btn-circle hidden lg:flex'>
-  <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </button>
     <Link to="/cart-page">
-    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-3 hidden lg:flex justify-center items-center">
+    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-3 lg:flex justify-center items-center">
         <div className="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"
