@@ -6,7 +6,7 @@
 // const Order = () => {
 //     const { user } = useAuth(); // Make sure to call the hook as a function
 //     const token = localStorage.getItem('access-token');
-    
+
 //     const { refetch, data: orders = [] } = useQuery({
 //         queryKey: ['orders', user?.email],
 //         queryFn: async () => {
@@ -89,18 +89,19 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../config';
 
 const Order = () => {
     const { user } = useAuth(); // Call the hook properly
     const token = localStorage.getItem('access-token');
-    
+
     const { refetch, data: orders = [] } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
             if (!user?.email) {
                 return []; // Return an empty array if user or user.email is undefined
             }
-            const response = await fetch(`http://localhost:6003/payments?email=${user?.email}`, {
+            const response = await fetch(`${BASE_URL}/payments?email=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${token}`
                 }

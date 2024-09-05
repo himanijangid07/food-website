@@ -5,6 +5,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from "sweetalert2"
 import { AuthContext } from '../../contexts/AuthProvider';
 import {Link} from "react-router-dom"
+import { BASE_URL } from '../../config';
 
 const CartPage = () => {
     const [cart, refetch] = useCart();
@@ -13,12 +14,12 @@ const CartPage = () => {
 
     const calculatePrice = (item) => {
       return item.discountedPrice * item.quantity;
-    } 
+    }
 
     const handleDecrease = (item) => {
       console.log(item._id);
       if(item.quantity > 1) {
-        fetch(`http://localhost:6003/carts/${item._id}`, {
+        fetch(`${BASE_URL}/carts/${item._id}`, {
           method: "PUT",
           headers: {
             "Content-type": "application/json; charset=UTF-8"
@@ -46,7 +47,7 @@ const CartPage = () => {
 
     const handleIncrease = (item) => {
       console.log(item._id);
-      fetch(`http://localhost:6003/carts/${item._id}`, {
+      fetch(`${BASE_URL}/carts/${item._id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json; charset=UTF-8"
@@ -85,7 +86,7 @@ const CartPage = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:6003/carts/${item._id}`, {
+              fetch(`${BASE_URL}/carts/${item._id}`, {
                 method: "DELETE"
               }).then(res => res.json()).then(data => {
                 if(data.deletedCount > 0) {
@@ -182,7 +183,7 @@ const CartPage = () => {
       </div>
     </div>
     </div>
-  ) 
+  )
 }
 
 export default CartPage

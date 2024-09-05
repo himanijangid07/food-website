@@ -1,8 +1,9 @@
 import axios from 'axios';
 import React from 'react'
+import { BASE_URL } from '../config';
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:6003'
+    baseURL: `${BASE_URL}`
   });
 
 const useAxiosPublic = () => {

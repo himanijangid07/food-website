@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../config";
 
 const Product = () => {
   const [product, setProduct] = useState([]);
@@ -14,7 +15,7 @@ const Product = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:6003/product");
+        const response = await fetch(`${BASE_URL}/product`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

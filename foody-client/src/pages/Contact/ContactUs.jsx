@@ -4,6 +4,7 @@ import { faFacebook, faInstagram, faYoutube, faLinkedin } from '@fortawesome/fre
 import { faPhone, faMapMarkerAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Swal from "sweetalert2"
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../config';
 
 const ContactUs = () => {
   const navigate = useNavigate();
@@ -29,8 +30,8 @@ const handleSubmit = (e) => {
 
 const PostData = (user) => {
   console.log("Data to be sent:", user);
-  
-  fetch('http://localhost:6003/contact', {
+
+  fetch(`${BASE_URL}/contact`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -104,36 +105,36 @@ const PostData = (user) => {
           </div>
           <form onSubmit={handleSubmit} className='md:w-1/2 ml-4'>
             <div className=' pb-10 w-full'>
-              <input 
-                type="text" 
-                name="name" 
-                placeholder="Your Name" 
-                value={user.name} 
-                onChange={handleInputs} 
-                className="input w-75 max-w-xs bg-white border-1 border border-gray p-2 mb-10" 
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={user.name}
+                onChange={handleInputs}
+                className="input w-75 max-w-xs bg-white border-1 border border-gray p-2 mb-10"
               />
-              <input 
-                type="email" 
+              <input
+                type="email"
                 name="email"
-                value={user.email} 
-                onChange={handleInputs} 
-                placeholder="Your Email" 
-                className="input w-full max-w-xs bg-white border-1 border border-gray p-2" 
+                value={user.email}
+                onChange={handleInputs}
+                placeholder="Your Email"
+                className="input w-full max-w-xs bg-white border-1 border border-gray p-2"
               />
             </div>
-            <input 
-              type="text" 
+            <input
+              type="text"
               name="subject"
-              placeholder="Subject" 
-              value={user.subject} 
-              onChange={handleInputs} 
-              className="input w-full max-w-xs bg-white border-1 border border-gray mb-10 p-2" 
+              placeholder="Subject"
+              value={user.subject}
+              onChange={handleInputs}
+              className="input w-full max-w-xs bg-white border-1 border border-gray mb-10 p-2"
             /><br />
-            <textarea 
+            <textarea
               name="message"
-              value={user.message} 
-              onChange={handleInputs} 
-              className="textarea border border-1 border-gray bg-white h-32 w-full p-2" 
+              value={user.message}
+              onChange={handleInputs}
+              className="textarea border border-1 border-gray bg-white h-32 w-full p-2"
               placeholder="Your Message"
             ></textarea>
             <input type='submit' onClick={() => PostData} className='my-10 text-white bg-green p-3 px-8 rounded-full' value='Send Message'/>

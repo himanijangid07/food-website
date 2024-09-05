@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { BASE_URL } from "../../config";
 
 const Products = () => {
   const [product, setProduct] = useState([]);
@@ -10,7 +11,7 @@ const Products = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:6003/product");
+        const response = await fetch(`${BASE_URL}/product`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -84,10 +85,10 @@ const Products = () => {
         ))}
       </div>
       <div className="flex justify-center">
-        <Link to='/product'>
-        <button className="bg-green text-white border-0 rounded-full p-3 px-8 m-10">
-          Browse More Products
-        </button>
+        <Link to="/product">
+          <button className="bg-green text-white border-0 rounded-full p-3 px-8 m-10">
+            Browse More Products
+          </button>
         </Link>
       </div>
     </div>

@@ -19,6 +19,7 @@ import UpdateProduct from '../pages/dashboard/admin/UpdateProduct'
 import Payment from "../pages/Products/Payment"
 import Order from "../pages/dashboard/Order"
 import ManageBookings from "../pages/dashboard/admin/ManageBookings"
+import { BASE_URL } from "../config";
 
 const router = createBrowserRouter([
     {
@@ -85,8 +86,8 @@ const router = createBrowserRouter([
         },
         {
           path: 'update-product/:id',
-          element: <UpdateProduct/>, 
-          loader: ({params}) => fetch(`http://localhost:6003/product/${params.id}`)
+          element: <UpdateProduct/>,
+          loader: ({params}) => fetch(`${BASE_URL}/product/${params.id}`)
         },
         {
           path: "manage-bookings",

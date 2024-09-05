@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import {AuthContext} from "../../contexts/AuthProvider";
 import Swal from 'sweetalert2';
 import {useLocation, useNavigate} from "react-router-dom";
+import { BASE_URL } from '../../config';
 
 const Cards = ({ item }) => {
   const {name, image, discountedPrice, category, id} = item;
@@ -15,7 +16,7 @@ const Cards = ({ item }) => {
     if(user && user?.email) {
       const cartItem = {productItemId: id, name, quantity: 1, image, discountedPrice, category, email: user.email};
       console.log(cartItem)
-      fetch('http://localhost:6003/carts', {
+      fetch(`${BASE_URL}/carts`, {
         method: "POST",
         headers: {
           'content-type': 'application/json'
