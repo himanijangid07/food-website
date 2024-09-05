@@ -1,1 +1,1 @@
-export const BASE_URL = "https://food-website-qpa8.onrender.com/";
+export const BASE_URL = "https://food-website-qpa8.onrender.com";
